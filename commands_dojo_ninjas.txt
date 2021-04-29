@@ -1,0 +1,64 @@
+1) Ejecuta el shell e importe sus modelos
+
+    python manage.py shell
+    from apps.dojo_ninjas_app.models import Dojo, Ninja
+
+2) Consulta: Crea 3 nuevos dojos
+
+    Dojo.objects.create(name = "CodingDojo Silicon Valley", city = "Mountain View", state = "CA")
+    Dojo.objects.create(name = "CodingDojo Seattle", city = "Seattle", state = "WA")
+    Dojo.objects.create(name = "CodingDojo New York", city = "New York", state = "NY")
+
+3) Consulta: elimina los 3 dojos que acaba de crear
+
+    Dojo.objects.all().delete()
+
+4) Consulta: Crea 3 dojos más
+
+    Dojo.objects.create(name = "CodingDojo Silicon Valley", city = "Mountain View", state = "CA")
+    Dojo.objects.create(name = "CodingDojo Seattle", city = "Seattle", state = "WA")
+    Dojo.objects.create(name = "CodingDojo New York", city = "New York", state = "NY")
+
+5) Consulta: crea 3 ninjas que pertenecen al primer dojo
+
+    Ninja.objects.create(first_name = "Jaime", laste_name = "Campillay", dojo = Dojo.objects.get(id=4))
+    Ninja.objects.create(first_name = "Sofia", laste_name = "Rosario", dojo = Dojo.objects.get(id=4))
+    Ninja.objects.create(first_name = "Benja", laste_name = "Estefano", dojo = Dojo.objects.get(id=4))
+
+6) Consulta: crea 3 ninjas que pertenecen al segundo dojo
+
+    Ninja.objects.create(first_name = "Vicente", laste_name = "canas",  dojo = Dojo.objects.get(id=5))
+    Ninja.objects.create(first_name = "Amelia", laste_name = "Aurora", dojo= Dojo.objects.get(id=5))
+    Ninja.objects.create(first_name = "Paula", laste_name = "Campillay", dojo = Dojo.objects.get(id=5))
+
+7) Consulta: crea 3 ninjas que pertenecen al tercer dojo
+
+    Ninja.objects.create(first_name = "Amelia", laste_name = "Aurora", dojo=Dojo.objects.get(id=5))
+    .
+    .
+    .
+
+8) Consulta: recupera todos los ninjas del primer dojo
+
+    Dojo.objects.get(id=4).ninjas.all()
+
+9) Consulta: recupera todos los ninjas del último dojo
+
+    Dojo.objects.get(id=6).ninjas.all()
+
+10) Consulta: recupera el último dojo del ninja
+
+    Ninja.objects.last()
+
+11) Agrega un nuevo campo de texto llamado "desc" a su clase de Dojo
+
+     desc = models.TextField()
+
+12)Crea y ejecuta los archivos de migración para actualizar la tabla en su base de datos. Si es necesario, proporcione un valor predeterminado de "dojo antiguo"
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+13) Consulta: crear un nuevo dojo
+
+    Dojo.objects.create(name = "CodingDojo Latam", city = "Satniago", state = "Chile")
